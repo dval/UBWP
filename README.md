@@ -18,6 +18,7 @@ When working in the source blend, each of these Interest Points recorded, will s
 ### Blender Install
 1. Open the script `MapReportTool.py` in your blender file and click `Run Script`.
 	![Blender Script Widnow](https://www.dropbox.com/s/ymfa632wos4rirb/Blender-run.png?raw=1)
+	
 2. Open 3D View Properties Panel `N-Key` and enter the file to read from.
 	![Blender MapTool Panel](https://www.dropbox.com/s/w1tbwyhtyob5bq9/Blender-config.png?raw=1)
 

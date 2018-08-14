@@ -12,7 +12,15 @@ namespace gamesolids
 {
     //the line formatting
     [ExecuteInEditMode]
-    public struct POI { public string name; public Vector3 pos; }
+    public struct POI {
+        public string name;
+        public Vector3 pos;
+        public POI(string n, Vector3 v)
+        {
+            name = n;
+            pos = v;
+        }
+    }
 
 
     [ExecuteInEditMode]
@@ -29,6 +37,10 @@ namespace gamesolids
         [HideInInspector]
         public string _FN;      //a private string to update filepath based on Unity project location.
 
+        [HideInInspector]
+        public string[] fileContents;
+
+        public List<POI> mapPoints = new List<POI>();
 
         public void Start()
         {
@@ -44,12 +56,40 @@ namespace gamesolids
                 // convert to blender corodinate space
                 Vector3 v = RecorderObject.transform.position;
                 Vector3 bv = new Vector3(v[0], v[2], v[1]);
-                
+
                 //write coords to newline in file
-                sw.WriteLine("\"name\"," + bv.ToString());
-                
+                sw.WriteLine("name, " + bv.ToString());
+
                 Debug.Log("Position Recorded: " + bv.ToString());
             }
+        }
+
+        public void GetAllPositions()
+        {
+            // Create StreamWriter to write struct values to text file.
+            fileContents = File.ReadAllLines(this._FN);
+            foreach(string sr in fileContents)
+            {
+                // convert from blender corodinate space
+                char[] sep = new char[]{ ','};
+                string[] ln = sr.Split(sep, 2);
+
+                char[] trm = new char[] { '(', ')' };
+                Vector3 v = new Vector3();
+                int vi = 0;
+                foreach(string si in ln[1].Trim(trm).Split(sep))
+                {
+                    v[vi] = float.Parse(si);
+                    vi++;
+                }
+                Vector3 bv = new Vector3(v[0], v[2], v[1]);
+
+                POI mp = new POI(ln[0], bv);
+                mapPoints.Add(mp);
+
+            }
+
+            Debug.Log(mapPoints.Count);
         }
 
         //Ugly but working

@@ -11,6 +11,8 @@ using UnityEditor;
 /// A terrible mash of static instances....
 /// Uses a menu shortcut hack to listen for keydown in edit mode.
 /// uses normal event listener in play mode.
+/// Thanks to `Naster` and `FeastSC2` at:
+/// https://forum.unity.com/threads/sceneview-onsceneguidelegate-view.465878/
 /// </summary>
 
 namespace gamesolids
@@ -40,6 +42,7 @@ namespace gamesolids
         /// </summary>
         public KeyListener() 
         {
+            //Scene view port
             SceneView.onSceneGUIDelegate += view =>
             {
                 Event e = Event.current;
@@ -52,8 +55,27 @@ namespace gamesolids
                     }
                 }
             };
+
+            //TODO: do this
+            //Hierarchy editor tab
+            //EditorApplication.hierarchyWindowItemOnGUI += DetectInput;
         }
-        
+
+        //TODO: implement
+        //private void DetectInput(int instanceID, Rect selectionRect)
+        //{
+        //    if (instanceID == Selection.activeInstanceID)
+        //    {
+        //        var e = Event.current;
+        //        if (e.type == EventType.KeyDown)
+        //        {
+        //            if (e.keyCode == KeyCode.G)
+        //            {
+        //                Debug.Log("G pressed");
+        //            }
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Invoke the Button or Event to be triggered by key press.

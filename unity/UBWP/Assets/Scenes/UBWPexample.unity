@@ -228,8 +228,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1338119348}
-  - component: {fileID: 1338119347}
   - component: {fileID: 1338119346}
+  - component: {fileID: 1338119347}
   m_Layer: 0
   m_Name: RecordingToolExample
   m_TagString: Untagged
@@ -249,7 +249,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExecuteInEditMode: 1
+  ModifierKey: 0
   ListenToKey: p
+  JoystickAxis: Fire3
+  UIButton: {fileID: 0}
   OnKeyDown:
     m_PersistentCalls:
       m_Calls:
@@ -266,7 +269,6 @@ MonoBehaviour:
         m_CallState: 1
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  instance: {fileID: 1338119346}
 --- !u!114 &1338119347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,9 +280,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f4ae3beba67dc4a8bec15305f36c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RecorderObject: {fileID: 1340945460}
+  RecorderObject: {fileID: 1338119348}
   fileName: ../../MapReportExample.txt
   _FN: X:/Projects/UBWP/unity/UBWP\../../MapReportExample.txt
+  fileContents:
+  - Timmy, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  - Map Point, (0.0, 0.0, 0.0)
+  mapPoints:
+  - name: Timmy
+    pos: {x: 0, y: 325, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
+  - name: Map Point
+    pos: {x: 0, y: 0, z: 0}
 --- !u!4 &1338119348
 Transform:
   m_ObjectHideFlags: 0

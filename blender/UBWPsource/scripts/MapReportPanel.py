@@ -3,23 +3,21 @@ from bpy.props import FloatVectorProperty,StringProperty
 
 #region ModuleProps
 
-# Create RNA properties in Scene, so 
+
 # all scenes can access the properties.
 def initSceneProperties():
 	# File path matches the Unity Example
-	path = bpy.types.Scene.gs_FilePath = StringProperty(
+	bpy.types.Scene.gs_FilePath = StringProperty(
 		name = "Report Path", 
 		default = "../../MapReportExample.txt"
 		)
 	
 	return
 
-#initialize the stuff in RNA
-initSceneProperties()
-
 #end region
 
 #region FileMethods
+
 
 #end region
 
@@ -35,9 +33,14 @@ class GameSolidsMapReportPanel(bpy.types.Panel):
 
 	## build a button with unique name and value for each Interest Point
 	def Button(self,id,value,col):
-		btn = col.operator("vector_jump.button", text="Area "+str(id))
+		btn = col.operator("vector_jump.button", text=str(id))
 		btn.b_vect = value
-		return btn
+		#return btn
+
+	## build a button with unique name and value for each Interest Point
+	def Property(self,context,id,col):
+		prpo = col.prop(context.scene,"string_name.field")
+		#return btn
 
 	## build the UI for the Panel
 	def draw(self, context):
@@ -52,6 +55,7 @@ class GameSolidsMapReportPanel(bpy.types.Panel):
 		layout.label(text="Area List:", icon="COLLAPSEMENU")
 		col = layout.column(); col.alignment = 'LEFT'
 
+
 		#look for filename relative to blender working folder
 		gs_fp = bpy.path.abspath("//"+scn.gs_FilePath)
 		#read into list
@@ -60,14 +64,24 @@ class GameSolidsMapReportPanel(bpy.types.Panel):
 		#clean lines
 		content = [x.strip() for x in content]
 		#itterate each line as a new Point of Interest
+		
+		
 		for c in range(0,len(content)):
 			poi = content[c].split(",",1)
 			vecname = poi[0]
 			#string to tuple, so python reads as single object cast to vector
-			vec = (tuple(float(i) for i in poi[1].strip("()").split(",")))
+			vec = (tuple(float(i) for i in poi[1].strip(" ()").split(",")))
 			#build button with data
-			self.Button(poi[0], vec, col)
-			
+			nrow = col.row()
+			nrow = nrow.split(0.2)
+
+			self.Button("Go", vec, nrow)
+			#nrow.prop(scn, "gs_MapPoints[c].mapPoint")
+			#print(gs_MapPoints[c].mapPoint)
+			self.Property(context,poi[0],nrow)
+			#mapPoint = bpy.props.StringProperty(default=poi[0])
+			#nrow.prop(scn,mapPoint[0])
+			nrow.label(poi[0])
 
 #The 'search' for the 3D viewport is purposfully obtuse. Written 
 #this way, it finds the active 3D viewport from any other viewport  
@@ -95,19 +109,36 @@ class Vector_Jump_Button(bpy.types.Operator):
 		return{'FINISHED'}    
  
 
+class String_Name_Field(bpy.types.Operator):
+	bl_idname = "string_name.field"
+	bl_label = ""
+	field = bpy.props.StringProperty()
+	
+	#this to find a window from another window in blender
+	def execute(self, context):
+		#update the data...
+						
+		
+		return{'FINISHED'}    
+ 
+
 #end region
 
 
 
 def register():
 	bpy.utils.register_class(Vector_Jump_Button)
+	bpy.utils.register_class(String_Name_Field)
 	bpy.utils.register_class(GameSolidsMapReportPanel)
 
 
 def unregister():
 	bpy.utils.unregister_class(Vector_Jump_Button)
+	bpy.utils.unregister_class(String_Name_Field)
 	bpy.utils.unregister_class(GameSolidsMapReportPanel)
 
 
 if __name__ == "__main__":
 	register()
+	#initialize the stuff in RNA
+	initSceneProperties()

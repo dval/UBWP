@@ -13,11 +13,12 @@ When working in the source blend, each of these Interest Points recorded, will s
 
 1. Add the RecordWorldPosition Component to an object. Link to a transform in the scene. This will expose the method `RecordPosition()` that you can call as you like.
 1. Optionally, add the KeyListener Component to use a KeyPress to trigger the RecordPostion method.
+	
 	![Unity Component Stack](https://www.dropbox.com/s/s4g2uliz0uqdjk3/Unity-install.png?raw=1)
 
 ### Blender Install
 1. Open the script `MapReportTool.py` in your blender file and click `Run Script`.
-	
+
 	![Blender Script Widnow](https://www.dropbox.com/s/ymfa632wos4rirb/Blender-run.png?raw=1)
 
 2. Open 3D View Properties Panel `N-Key` and enter the file to read from.

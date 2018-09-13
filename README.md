@@ -13,7 +13,7 @@ After switching back to the source blend, each of the Points recorded will show 
 1. Add the RecordWorldPosition Component to an object. Link to a transform in the scene. This will expose the method `RecordPosition()` that you can call as you like.
 2. Optionally, add the KeyListener Component to use a KeyPress to trigger the RecordPostion method.
 	
-	![Unity Component Stack](./UnityUi.png?raw=true)
+	![Unity Component Stack](./UnityUI.png?raw=true)
 
 ### Blender Panel
 1. Open the script `MapReportTool.py` in your blender file and click `Run Script`.

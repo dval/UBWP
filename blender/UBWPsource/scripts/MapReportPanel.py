@@ -1,3 +1,8 @@
+'''
+Special thanks to VincentG @ bbug for helping with this.
+https://bbug.be/?topic=script-how-to-add-custom-list-property/#post-1280
+(4 years ago... the answer was posted to the question I had yesterday. )
+'''
 import bpy
 import mathutils
 from bpy.props import FloatVectorProperty, StringProperty
